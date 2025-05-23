@@ -117,3 +117,50 @@ This task list follows the flow a user experiences in the app.
 - [ ] Secure storage of JWT
 - [ ] Full test on Android and iOS
 - [ ] App build for deployment
+
+
+
+
+## 📂 Default Categories (Customizable)
+Default categories can include:
+- Groceries
+- Dining
+- Transport
+- Utilities
+- Entertainment
+- Health
+- Rent
+- Education
+- Shopping
+- Miscellaneous
+
+Users may be allowed to customize these in future updates.
+
+
+
+
+
+## Schema Reference (MongoDB)
+
+### User Schema :-
+username: unique email
+password: hashed via bcrypt
+
+### Expense Schema
+amount: Number (required)
+shop_name: String (required)
+purpose: String (required)
+timestamp: Date
+input_method: Enum (manual, image, text)
+created_at: Date
+
+### Invoice Schema
+image_path: String
+extracted_text: String
+processed_at: Date
+
+
+
+## 🧾 Upload Limits (Recommended)
+Receipt image size: Max 5MB (.jpg, .png)
+Voice audio size: Max 3MB (.mp3, .wav, ~30 seconds duration)
