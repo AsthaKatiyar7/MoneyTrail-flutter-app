@@ -140,24 +140,35 @@ Users may be allowed to customize these in future updates.
 
 
 
-## Schema Reference (MongoDB)
+# 🗃️ Database Schema Overview
 
-### User Schema :-
-username: unique email
-password: hashed via bcrypt
+This file summarizes the structure of the schemas used in the Money Trail backend.
 
-### Expense Schema
-amount: Number (required)
-shop_name: String (required)
-purpose: String (required)
-timestamp: Date
-input_method: Enum (manual, image, text)
-created_at: Date
+---
 
-### Invoice Schema
-image_path: String
-extracted_text: String
-processed_at: Date
+## 👤 User Schema
+
+- **username**: *String*, unique, used as email  
+- **password**: *String*, hashed via bcrypt
+
+---
+
+## 💸 Expense Schema
+
+- **amount**: *Number* (required)  
+- **shop_name**: *String* (required)  
+- **purpose**: *String* (required)  
+- **timestamp**: *Date*  
+- **input_method**: *Enum* — one of `manual`, `image`, `text`  
+- **created_at**: *Date* (auto-generated)
+
+---
+
+## 🧾 Invoice Schema
+
+- **image_path**: *String* (required)  
+- **extracted_text**: *String*  
+- **processed_at**: *Date* (auto-generated)
 
 
 
