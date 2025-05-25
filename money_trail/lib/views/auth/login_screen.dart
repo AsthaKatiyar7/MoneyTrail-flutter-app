@@ -26,12 +26,16 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _login() async {
     if (_formKey.currentState?.validate() ?? false) {
       final success = await context.read<AuthProvider>().login(
-            username: _usernameController.text.trim(),
-            password: _passwordController.text,
-          );
+        username: _usernameController.text.trim(),
+        password: _passwordController.text,
+      );
 
       if (success && mounted) {
-        Navigator.pushReplacementNamed(context, '/dashboard');
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/dashboard',
+          (route) => false, // Remove all previous routes
+        );
       }
     }
   }
@@ -41,9 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final authProvider = context.watch<AuthProvider>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
+      appBar: AppBar(title: const Text('Login')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -54,10 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               const Text(
                 'Welcome Back!',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
